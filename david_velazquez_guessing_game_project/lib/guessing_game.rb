@@ -12,8 +12,26 @@ class GuessingGame
         @num_attempts
     end
 
+    def game_over?
+        @game_over
+    end
 
+    def check_num(num)
+        @num_attempts += 1
+        if num == @secret_num
+            @game_over = true 
+            puts "You win"
+        elsif num > @secret_num
+            puts "Too big"
+        else
+            puts "Too small"
+        end
+    end
 
-
+    def ask_user
+        puts "Enter a number"
+      response = gets.chomp.to_i
+      self.check_num(response)
+    end
 
 end #End class
